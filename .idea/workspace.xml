@@ -16,8 +16,8 @@
       <file leaf-file-name="capture.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/capture.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
-              <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
+            <state relative-caret-position="350">
+              <caret line="21" column="49" selection-start-line="21" selection-start-column="49" selection-end-line="21" selection-end-column="49" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -147,8 +147,8 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/capture.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
+        <state relative-caret-position="350">
+          <caret line="21" column="49" selection-start-line="21" selection-start-column="49" selection-end-line="21" selection-end-column="49" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
           </folding>

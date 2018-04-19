@@ -14,7 +14,17 @@ video_capture = cv2.VideoCapture(0)
 
 # Extract the features of two image's
 ali_gholami = face_recognition.load_image_file("ali.jpg")
-obama_face_encoding = face_recognition.face_encodings(ali_gholami)[0]
+ali_gholami_encoding = face_recognition.face_encodings(ali_gholami)[0]
 
 mohammad_khajavi = face_recognition.load_image_file("mohammad.jpg")
-biden_face_encoding = face_recognition.face_encodings(mohammad_khajavi)[0]
+mohammad_khajavi_encoding = face_recognition.face_encodings(mohammad_khajavi)[0]
+
+# Create arrays of face encodings and their names
+known_face_encodings = [
+    ali_gholami_encoding,
+    mohammad_khajavi_encoding
+]
+known_face_names = [
+    "Ali Gholami",
+    "Gholami"
+]
