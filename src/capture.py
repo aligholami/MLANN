@@ -16,17 +16,17 @@ video_capture = cv2.VideoCapture(0)
 ali_gholami = face_recognition.load_image_file("ali.jpg")
 ali_gholami_encoding = face_recognition.face_encodings(ali_gholami)[0]
 
-mohammad_khajavi = face_recognition.load_image_file("mohammad.jpg")
-mohammad_khajavi_encoding = face_recognition.face_encodings(mohammad_khajavi)[0]
+sepehr_sabour = face_recognition.load_image_file("mohammad.jpg")
+sepehr_sabour_encoding = face_recognition.face_encodings(sepehr_sabour)[0]
 
 # Create arrays of face encodings and their names
 known_face_encodings = [
     ali_gholami_encoding,
-    mohammad_khajavi_encoding
+    sepehr_sabour_encoding
 ]
 known_face_names = [
     "Ali Gholami",
-    "Gholami"
+    "Sepehr Sabour"
 ]
 
 # Some variables defined
