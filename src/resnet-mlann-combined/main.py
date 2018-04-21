@@ -21,9 +21,9 @@ import numpy as np
 def main(args):
     mode = args.mode
     if(mode == "camera"):
-        camera_recog()
+        camera_session()
     elif mode == "input":
-        create_manual_data();
+        new_user_session();
     else:
         raise ValueError("Unimplemented mode")
 '''
@@ -36,7 +36,7 @@ Images from Video Capture -> detect faces' regions -> crop those faces and align
     (Distance threshold is 0.6, percentage threshold is 70%)
     
 '''
-def camera_recog():
+def camera_session():
     print("[INFO] camera sensor warming up...")
     vs = cv2.VideoCapture(0); #get input from webcam
     while True:
@@ -112,7 +112,7 @@ User input his/her name or ID -> Images from Video Capture -> detect the face ->
     -> Save
     
 '''
-def create_manual_data():
+def new_user_session():
     vs = cv2.VideoCapture(0); #get input from webcam
     
     ("Please input new user ID:")
