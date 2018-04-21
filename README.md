@@ -9,8 +9,7 @@
 </p>
 
 ---
-#### Overview
-
+## Overview
 
 #### Step-by-step Guidline
 *   Extract frames from video capture.
@@ -19,5 +18,6 @@
 *   Each face is assigned to one of these categories; **right**, **left**, **center**. (Pose Invariant Recognition)
 *   Extract feature maps of shape (128, 1) from images.
 *   Perform an initial search among categories.
-*   Perform an exhaustive search of all dataset using **ANN**(Approximate Nearest Neighbor) method.
+*   Perform an exhaustive search of all dataset using **ANN**(Approximate Nearest Neighbor) method. (Distance threshold is 0.6, percentage threshold is 70%)
+
 
