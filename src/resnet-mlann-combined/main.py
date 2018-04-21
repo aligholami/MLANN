@@ -104,31 +104,44 @@ facerec_128D.txt Data Structure:
 This function basically does a simple linear search for 
 ^the 128D vector with the min distance to the 128D vector of the face on screen
 '''
-def find_known_faces(features_arr, positions, thres = 0.6, percent_thres = 70):
+def find_known_faces(feature_mmap, positions, threshold = 0.6, p_threshold = 70):
     '''
-    :param features_arr: a list of 128d Features of all faces on screen
-    :param positions: a list of face position types of all faces on screen
-    :param thres: distance threshold
-    :return: person name and percentage
+        :param feature_mmap: an array of feature maps with shape (128, 1)
+        :param positions: a list of face position types of all faces on screen
+        :param thres: distance threshold
+        :return: face name and confidence percentage
     '''
-    f = open('./facerec_128D.txt','r')
-    data_set = json.loads(f.read());
-    returnRes = [];
-    for (i, features_128D) in enumerate(features_arr):
-        result = "Unknown";
+
+    f = open('./facerec_128D.txt', 'r')
+
+    data_set = json.loads(f.read())
+    known_faces_info = []
+
+    for (i, input_feature_map) in enumerate(feature_mmap):
+        result = "Unknown"
         smallest = sys.maxsize
+
         for person in data_set.keys():
-            person_data = data_set[person][positions[i]];
-            for data in person_data:
-                distance = np.sqrt(np.sum(np.square(data-features_128D)))
+            person_data = data_set[person][positions[i]]
+
+            # One of the checkpoints of this project
+            for known_feature_map in person_data:
+                distance = np.sqrt(np.sum(np.square(known_feature_map - input_feature_map)))
+
                 if(distance < smallest):
-                    smallest = distance;
-                    result = person;
-        percentage =  min(100, 100 * thres / smallest)
-        if percentage <= percent_thres :
+                    smallest = distance
+                    result = person
+
+        percentage =  min(100, 100 * threshold / smallest)
+
+        # In case the confidence percentage is not satisfying
+        if percentage <= p_threshold:
             result = "Unknown"
-        returnRes.append((result,percentage))
-    return returnRes
+
+        known_faces_info.append((result, percentage))
+
+    return known_faces_info
+
 
 '''
 Description:
