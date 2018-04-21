@@ -20,3 +20,5 @@ I've used **face_recognition**, **OpenCV** and **dlib** library to implement thi
 * Find all the faces and face encodings in the current frame of video
 * Find the best match using **Nearest Neighbor** method
 
+##### Feature Extraction
+* Feature extraction with [Inception Resnet V2](https://tfhub.dev/google/imagenet/inception_resnet_v2/feature_vector/1) using Tensorflow
