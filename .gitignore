@@ -105,4 +105,5 @@ venv.bak/
 
 .dat
 .DAT
-/.dat
+model_check_point/
+.pb
