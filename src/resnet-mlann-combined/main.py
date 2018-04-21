@@ -1,14 +1,12 @@
-'''
-Main program
-@Author: David Vu
-
-To execute simply run:
-main.py
-
-To input new user:
-main.py --mode "input"
-
-'''
+# ========================================
+# [] File Name : main.py
+#
+# [] Creation Date : April 2018
+#
+# [] Author 1 : David Vu
+# [] Author 2 : Ali Gholami
+#
+# ========================================
 
 import cv2
 from align_custom import AlignCustom
