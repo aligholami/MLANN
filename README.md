@@ -18,3 +18,6 @@
 *   Crop faces and align them.
 *   Each face is assigned to one of these categories; **right**, **left**, **center**. (Pose Invariant Recognition)
 *   Extract feature maps of shape (128, 1) from images.
+*   Perform an initial search among categories.
+*   Perform an exhaustive search of all dataset using **ANN**(Approximate Nearest Neighbor) method.
+
