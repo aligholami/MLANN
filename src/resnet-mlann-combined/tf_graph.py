@@ -1,14 +1,18 @@
-'''
-Load pretrain models and create a tensorflow session to run them
+# ========================================
+# [] File Name : main.py
+#
+# [] Creation Date : April 2018
+#
+# [] Author 1 : David Vu
+# [] Author 2 : Ali Gholami
+#
+# ========================================
 
-@Author: David Vu
-'''
 import tensorflow as tf
 
 
 class FaceRecGraph(object):
+
     def __init__(self):
-        '''
-            There'll be more to come in this class
-        '''
+
         self.graph = tf.Graph();

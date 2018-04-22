@@ -124,7 +124,11 @@ def find_known_faces(feature_mmap, positions, threshold = 0.6, p_threshold = 70)
         for person in data_set.keys():
             person_data = data_set[person][positions[i]]
 
-            # One of the checkpoints of this project
+            ####################################
+            ####################################
+            ######## Project Checkpoint ########
+            ####################################
+            ####################################
             for known_feature_map in person_data:
                 distance = np.sqrt(np.sum(np.square(known_feature_map - input_feature_map)))
 

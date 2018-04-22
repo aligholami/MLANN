@@ -1,7 +1,13 @@
-'''
-@Author: David Vu
-Run the pretrained model to extract 128D face features
-'''
+# ========================================
+# [] File Name : face_feature.py
+#
+# [] Creation Date : April 2018
+#
+# [] Author 1 : David Vu
+# [] Author 2 : Ali Gholami
+#
+# ========================================
+
 
 import tensorflow as tf
 from architecture import inception_resnet_v1 as resnet

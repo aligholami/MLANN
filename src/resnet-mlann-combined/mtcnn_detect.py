@@ -1,8 +1,12 @@
-'''
-Tensorflow implementation of the mtcnn face detection algorithm
+# ========================================
+# [] File Name : mtcnn_detect.py
+#
+# [] Creation Date : April 2018
+#
+# [] Author 1 : DavidSandBerg
+#
+# ========================================
 
-Credit: DavidSandBerg for implementing this method on tensorflow
-'''
 from six import string_types, iteritems
 import numpy as np
 import tensorflow as tf
