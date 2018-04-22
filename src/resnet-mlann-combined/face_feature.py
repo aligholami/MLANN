@@ -24,7 +24,7 @@ class FaceFeature(object):
             self.x = tf.placeholder('float', [None, 160, 160, 3])
             # Reload the base model variables
             self.embeddings = tf.nn.l2_normalize(
-                resnet.inference(self.x, KEEP_PROB, phase_train=DO_NOT_TRAIN_MODEL)[0], 1, 1e-10)
+                resnet.inference(self.x, KEEP_PROB, phase_train = DO_NOT_TRAIN_MODEL)[0], 1, 1e-10)
 
             # Restore the pretrained model
             saver = tf.train.Saver()

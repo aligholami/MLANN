@@ -30,10 +30,10 @@ def main(args):
     elif mode == "input":
         add_new_user()
     else:
-        raise ValueError(">>> [ERROR] Unimplemented mode")
+        raise ValueError("\n [ERROR] Unimplemented mode")
 
 def begin_camera_session():
-    print(">>> [INFO] Initialized camera session...")
+    print("\n [INFO] Initialized camera session...")
 
     # Get the webcam handle
     vs = cv2.VideoCapture(0)
@@ -43,7 +43,7 @@ def begin_camera_session():
         _,frame = vs.read();
 
         # Find the faces in the frame
-        rects, landmarks = face_detect.detect_face(frame, MIN_FACE_SIZE)
+        rects, landmarks = face_detector.detect_face(frame, MIN_FACE_SIZE)
 
         aligns = []
         positions = []
@@ -58,13 +58,13 @@ def begin_camera_session():
                 aligns.append(aligned_face)
                 positions.append(face_pos)
             else: 
-                print(">>> [INFO] Face alignment failed.")      
+                print("\n [INFO] Face alignment failed.")      
 
         # In case any faces found properly
         if(len(aligns) > 0):
 
             # An array of feature maps
-            feature_mmap = extract_feature.get_features(aligns)
+            feature_mmap = feature_extractor.get_features(aligns)
 
             # Find known faces
             recognized_faces = find_known_faces(feature_mmap, positions);
@@ -147,12 +147,12 @@ def add_new_user():
     # Get the webcam handle
     vs = cv2.VideoCapture(0)
     
-    print("\n>>> [INFO] Welcome to BioFace.")
-    print("\n>>> What's your name?")
+    print("\n [INFO] Welcome to BioFace.")
+    print("\n What's your name?")
     new_name = input()
 
     # Open up the faces database(read permission only)
-    f = open('./faces_db.txt','r')
+    f = open('./faces_db.txt', 'r')
 
     # Load the database into the ram
     data_set = json.loads(f.read())
@@ -169,7 +169,7 @@ def add_new_user():
 
         # Capture frame by frame
         _, frame = vs.read();
-        rects, landmarks = face_detect.detect_face(frame, MIN_FACE_SIZE)
+        rects, landmarks = face_detector.detect_face(frame, MIN_FACE_SIZE)
 
         for (i, rect) in enumerate(rects):
             aligned_frame, pos = aligner.align(DESIRED_SIZE, frame, landmarks[i]);
@@ -184,7 +184,7 @@ def add_new_user():
 
     # Save face features to the dataset
     for pos in person_imgs:
-        person_features[pos] = [np.mean(extract_feature.get_features(person_imgs[pos]), axis=0).tolist()]
+        person_features[pos] = [np.mean(feature_extractor.get_features(person_imgs[pos]), axis=0).tolist()]
     data_set[new_name] = person_features;
 
     # Open up the faces database (Write permission only)
@@ -194,15 +194,19 @@ def add_new_user():
     f.write(json.dumps(data_set))
 
 
-
-
-
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument("--mode", type=str, help="Run camera recognition", default="camera")
-    args = parser.parse_args(sys.argv[1:]);
-    FRGraph = FaceRecGraph();
-    aligner = AlignCustom();
-    extract_feature = FaceFeature(FRGraph)
-    face_detect = MTCNNDetect(FRGraph, scale_factor=2); #scale_factor, rescales image for faster detection
+
+    args = parser.parse_args(sys.argv[1:])
+
+    FRGraph = FaceRecGraph()
+
+    aligner = AlignCustom()
+
+    feature_extractor = FaceFeature(FRGraph)
+
+    # Rescale for faster detection
+    face_detector = MTCNNDetect(FRGraph, scale_factor=2)
+
     main(args);
