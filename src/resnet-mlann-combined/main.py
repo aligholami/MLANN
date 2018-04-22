@@ -30,10 +30,10 @@ def main(args):
     elif mode == "input":
         add_new_user()
     else:
-        raise ValueError("Unimplemented mode")
+        raise ValueError(">>> [ERROR] Unimplemented mode")
 
 def begin_camera_session():
-    print("[INFO] Initialized camera session...")
+    print(">>> [INFO] Initialized camera session...")
 
     # Get the webcam handle
     vs = cv2.VideoCapture(0)
@@ -58,7 +58,7 @@ def begin_camera_session():
                 aligns.append(aligned_face)
                 positions.append(face_pos)
             else: 
-                print("Face alignment failed.")      
+                print(">>> [INFO] Face alignment failed.")      
 
         # In case any faces found properly
         if(len(aligns) > 0):
@@ -112,7 +112,7 @@ def find_known_faces(feature_mmap, positions, threshold = 0.6, p_threshold = 70)
         :return: face name and confidence percentage
     '''
 
-    f = open('./facerec_128D.txt', 'r')
+    f = open('./faces_db.txt', 'r')
 
     data_set = json.loads(f.read())
     known_faces_info = []
@@ -142,44 +142,55 @@ def find_known_faces(feature_mmap, positions, threshold = 0.6, p_threshold = 70)
 
     return known_faces_info
 
-
-'''
-Description:
-User input his/her name or ID -> Images from Video Capture -> detect the face -> crop the face and align it 
-    -> face is then categorized in 3 types: Center, Left, Right 
-    -> Extract 128D vectors( face features)
-    -> Append each newly extracted face 128D vector to its corresponding position type (Center, Left, Right)
-    -> Press Q to stop capturing
-    -> Find the center ( the mean) of those 128D vectors in each category. ( np.mean(...) )
-    -> Save
-    
-'''
 def add_new_user():
-    vs = cv2.VideoCapture(0); #get input from webcam
     
-    ("Please input new user ID:")
-    new_name = input(); #ez python input()
-    f = open('./facerec_128D.txt','r');
-    data_set = json.loads(f.read());
-    person_imgs = {"Left" : [], "Right": [], "Center": []};
-    person_features = {"Left" : [], "Right": [], "Center": []};
-    print("Please start turning slowly. Press 'q' to save and add this new user to the dataset");
+    # Get the webcam handle
+    vs = cv2.VideoCapture(0)
+    
+    print("\n>>> [INFO] Welcome to BioFace.")
+    print("\n>>> What's your name?")
+    new_name = input()
+
+    # Open up the faces database(read permission only)
+    f = open('./faces_db.txt','r')
+
+    # Load the database into the ram
+    data_set = json.loads(f.read())
+
+
+    person_imgs = {"Left" : [], "Right": [], "Center": []}
+    person_features = {"Left" : [], "Right": [], "Center": []}
+
+    # Some acknowledgements
+    print("\n [INFO] Please start turning slowly...")
+    print("\n [INFO] Press q to save and exit.")
+
     while True:
+
+        # Capture frame by frame
         _, frame = vs.read();
-        rects, landmarks = face_detect.detect_face(frame, 80);  # min face size is set to 80x80
+        rects, landmarks = face_detect.detect_face(frame, MIN_FACE_SIZE)
+
         for (i, rect) in enumerate(rects):
-            aligned_frame, pos = aligner.align(160,frame,landmarks[i]);
-            if len(aligned_frame) == 160 and len(aligned_frame[0]) == 160:
+            aligned_frame, pos = aligner.align(DESIRED_SIZE, frame, landmarks[i]);
+            if len(aligned_frame) == DESIRED_SIZE and len(aligned_frame[0]) == DESIRED_SIZE:
                 person_imgs[pos].append(aligned_frame)
                 cv2.imshow("Captured face", aligned_frame)
+
+        # Exit on interrupt     
         key = cv2.waitKey(1) & 0xFF
         if key == ord("q"):
             break
 
-    for pos in person_imgs: #there r some exceptions here, but I'll just leave it as this to keep it simple
-        person_features[pos] = [np.mean(extract_feature.get_features(person_imgs[pos]),axis=0).tolist()]
+    # Save face features to the dataset
+    for pos in person_imgs:
+        person_features[pos] = [np.mean(extract_feature.get_features(person_imgs[pos]), axis=0).tolist()]
     data_set[new_name] = person_features;
-    f = open('./facerec_128D.txt', 'w');
+
+    # Open up the faces database (Write permission only)
+    f = open('./faces_db.txt', 'w');
+
+    # Write and close the db
     f.write(json.dumps(data_set))
 
 
