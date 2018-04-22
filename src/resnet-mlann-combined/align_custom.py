@@ -1,14 +1,14 @@
-'''
-Implement  Dlib Face alignment strategy
+# ========================================
+# [] File Name : align_custom.py
+#
+# [] Creation Date : April 2018
+#
+# DLIB's Alignment Strategy
+#
+# ========================================
 
-However, this method/approach doesn't deform the original image like Dlib does.
 
-This also categorizes the face in 3 types: Center, Left, Right
-
-Align face based on facial landmarks
-'''
 import math
-
 import cv2
 import numpy as np
 
