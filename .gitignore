@@ -109,3 +109,4 @@ model_check_point/
 .pb
 .npy
 models/
+lfw/
