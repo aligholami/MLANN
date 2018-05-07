@@ -159,15 +159,43 @@
 	$W_v$ is the actual class of the input image.
 	
 \section{Initial Intuition}
-The core implementation of this algorithm is where the reference images are being selected. In the nearest neighbor method, the whole database is brute forced to find the nearest image to the input image. But in this method, there are conceptually different approaches that can speed up finding the best match for the input image.
+The core implementation of this algorithm is where the reference images are being selected. In the nearest neighbor method, the whole database is brute forced to find the nearest image to the input image. But in this method, there are conceptually different approaches that can speed up finding the best match for the input image. This method conducts the Best-bin-first kd-trees (An extension of classic kd-trees) to create a priority queue of the reference images. Next, the highest priority item $X_i$ is pulled from the queue and the set of reference images $X_i^{(M)}$ is determined by the following expression:
+$$
+	(\forall X_k \epsilon X_i^{(M)})(\forall X_j \not\epsilon X_i^{(M)})
+$$
+$$
+	|\rho_{i, k} - \rho(X, X_k)| \leq |\rho_{i, j} - \rho(X, X_j)|
+$$
+Note that $\rho_{i, k}$ are the elements of the distance matrix $P = [\rho_{i, j}]$ which is computed in the preliminarily step.
+
+\section{Assumptions}
+Here is the main assumptions of the algorithm we'll discuss below.
+\begin{enumerate}
+	\item The reference images from different
+	classes are independent.
+	
+	\item The probability distributions of the
+	feature vectors from the same class are identical.
+\end{enumerate}
+\section{Core Algorithm} 
+Let the reference images $X_{r_1}, X_{r_2}, ..., X_{r_k}$ have been checked before the k-th step, i.e. the distances $\rho(X, X_{r_1}), \rho(X, X_{r_2}), ... \rho(X, X_{r_k})$ are computed. The next reference image is selected using the following formula:
+$$
+	r_{k+1} = \underset{v \epsilon \{1, ..., R\} - \{r_1, ..., r_k\}}{argmax}(p_v. \prod_{i = 1}^{k} f(\rho(X, X_{r_i}) | W_v))
+$$
+where $\prod_{i = 1}^{k} f(\rho(X, X_{r_i}) | W_v)$ is the conditional density of the distance $\rho(X, X_{r_i})$ if the hypothesis $W_v$ is true. If the prior probabilities of all classes are not identical, then the next instance will be selected from the majority classes with high probability. 
+
+\section{Datasets \& Implementation Progress}
+The initial platform for the face recognition is implemented using \textit{OpenCV} and \textit{Tensorflow}. Faces are detected using the \textit{MTCNN}\cite{HOP96} method which is an extension of the implementation of \textit{David Sandberg} (FaceNet's Contributor). The features are extracted in real time using \textit{ResNet V1}\cite{HOP97}. It is planned to generate a database of extracted features using \textit{13000} images of the \textit{LFW} dataset which consists of labeled faces in approximately 1600 categories. Note that the current implementation of the project, which we call it \textit{BioFace} from this day forward, uses the naive nearest neighbor brute force search to find the best match of the input image among the reference images in database.
 % Now we need a bibliography:
 \begin{thebibliography}{5}
-
-	%Each item starts with a \bibitem{reference} command and the details thereafter.
+	
 	\bibitem{HOP96} % Transaction paper
-	Schroff, Florian, Dmitry Kalenichenko, and James Philbin. "Facenet: A unified embedding for face recognition and clustering." Proceedings of the IEEE conference on computer vision and pattern recognition. 2015.
+	Zhang, Kaipeng, et al. "Joint face detection and alignment using multitask cascaded convolutional networks." IEEE Signal Processing Letters 23.10 (2016): 1499-1503.
 
+	\bibitem{HOP97} % Transaction paper
+	He, Kaiming, et al. "Deep residual learning for image recognition." Proceedings of the IEEE conference on computer vision and pattern recognition. 2016.
 \end{thebibliography}
+
 
 % Your document ends here!
 \end{document}
