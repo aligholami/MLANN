@@ -189,10 +189,10 @@ def add_new_user():
     # Save face features to the dataset
     for pos in person_imgs:
         person_features[pos] = [np.mean(feature_extractor.get_features(person_imgs[pos]), axis=0).tolist()]
-    data_set[new_name] = person_features;
+    data_set[new_name] = person_features
 
     # Open up the faces database (Write permission only)
-    f = open('./faces_db.txt', 'w');
+    f = open('./faces_db.txt', 'w')
 
     # Write and close the db
     f.write(json.dumps(data_set))
@@ -213,4 +213,4 @@ if __name__ == '__main__':
     # Rescale for faster detection
     face_detector = MTCNNDetect(FRGraph, scale_factor=2)
 
-    main(args);
+    main(args)
