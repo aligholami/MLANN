@@ -172,11 +172,11 @@ def add_new_user():
     while True:
 
         # Capture frame by frame
-        _, frame = vs.read();
+        _, frame = vs.read()
         rects, landmarks = face_detector.detect_face(frame, MIN_FACE_SIZE)
 
         for (i, rect) in enumerate(rects):
-            aligned_frame, pos = aligner.align(DESIRED_SIZE, frame, landmarks[i]);
+            aligned_frame, pos = aligner.align(DESIRED_SIZE, frame, landmarks[i])
             if len(aligned_frame) == DESIRED_SIZE and len(aligned_frame[0]) == DESIRED_SIZE:
                 person_imgs[pos].append(aligned_frame)
                 cv2.imshow("Captured face", aligned_frame)
