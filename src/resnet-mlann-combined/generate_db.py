@@ -65,3 +65,9 @@ while True:
             person_features_from_different_angles[pos] = [np.mean(feature_extractor.get_features(person_imgs_from_different_angles[pos]), axis = 0).tolist()]
         
         data_set[person_name] = person_features_from_different_angles
+
+        # Write back to db
+        f = open('./faces_db.txt', 'w')
+        f.write(json.dumps(data_set))
+
+        
