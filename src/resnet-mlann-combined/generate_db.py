@@ -59,44 +59,53 @@ for subdir, dirs, files in os.walk(ROOT_DIRECTORY):
         image = cv2.imread(image_path)
 
         
-        while True:
 
-            detected = face_detector.detect_faces(image)
+        detected = face_detector.detect_faces(image)
+
+        if(len(detected) != 0):
+            detected = detected[0]
 
             rects, landmarks = detected["box"], detected["keypoints"]
+
+
+            landmark_s = []
+            # Configure landmarks -> Put them in a list
+            for key, value in landmarks.items():
+                for val in value:            
+                    landmark_s.append(val)
+
+            print("[INFO] Landmarks are ", landmark_s)
 
             person_imgs_from_different_angles = {"Left" : [], "Right": [], "Center": []}
             person_features_from_different_angles = {"Left" : [], "Right": [], "Center": []}
 
             # Iterate through all rects in that image(there will be one in this case)
-            for(i, rect) in enumerate(rects):
-
-                # Align image and find the position of the face
-                aligned_image, pos = aligner.align(DESIRED_SIZE, image, landmarks[i]);
-                
-                if len(aligned_image) == DESIRED_SIZE and len(aligned_image[0]) == DESIRED_SIZE:   
-                    # Load the aligned face to the proper angle
-                    person_imgs_from_different_angles[pos].append(aligned_image)
-
-
-            print("[INFO] Number of persons in the image: ", rects)
-
+            # Align image and find the position of the face
+            aligned_image, pos = aligner.align(DESIRED_SIZE, image, landmark_s);
             
-            # Exit on interrupt     
-            key = cv2.waitKey(1) & 0xFF
-            if key == ord("q"):
-                break
+            if len(aligned_image) == DESIRED_SIZE and len(aligned_image[0]) == DESIRED_SIZE:   
+                # Load the aligned face to the proper angle
+                person_imgs_from_different_angles[pos].append(aligned_image)
 
-        # Extract the features from images
-        for pos in person_imgs_from_different_angles:
-            person_features_from_different_angles[pos] = [np.mean(feature_extractor.get_features(person_imgs_from_different_angles[pos]), axis = 0).tolist()]
-        
-        data_set[img_name] = person_features_from_different_angles
 
-        # Write back to db
-        f = open('./faces_db.txt', 'w')
-        f.write(json.dumps(data_set))
 
-        print("[INFO] Added image to database... ")
+            print("[INFO] Number of persons in the image: ", len(rects)/4)
 
+            # Extract the features from images
+            for pos in person_imgs_from_different_angles:
+                if (pos == "Center"):
+                    person_features_from_different_angles[pos] = [np.mean(feature_extractor.get_features(person_imgs_from_different_angles[pos]), axis = 0).tolist()]
+                else:
+                    person_features_from_different_angles[pos] = 0
+            
+            data_set[img_name] = person_features_from_different_angles
+
+            # Write back to db
+            f = open('./faces_db.txt', 'w')
+            f.write(json.dumps(data_set))
+
+            print("[INFO] Added image to database... ")
+
+        else:
+            pass
 
