@@ -118,6 +118,7 @@ def find_known_faces(feature_mmap, positions, threshold = 0.6, p_threshold = 70)
     known_faces_info = []
 
     for (i, input_feature_map) in enumerate(feature_mmap):
+
         result = "Unknown"
         smallest = sys.maxsize
 
@@ -130,7 +131,7 @@ def find_known_faces(feature_mmap, positions, threshold = 0.6, p_threshold = 70)
             ####################################
             ####################################
             for known_feature_map in person_data:
-                distance = np.sqrt(np.sum(np.square(known_feature_map - input_feature_map)))
+                distance = np.sqrt(np.sum(np.square(known_feature_map[256:384] - input_feature_map[256:384])))
 
                 if(distance < smallest):
                     smallest = distance

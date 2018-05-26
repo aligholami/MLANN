@@ -63,54 +63,51 @@ for subdir, dirs, files in os.walk(ROOT_DIRECTORY):
         detected = face_detector.detect_faces(image)
 
         if(len(detected) != 0):
-            try:
+            detected = detected[0]
 
-                detected = detected[0]
-
-                rects, landmarks = detected["box"], detected["keypoints"]
+            rects, landmarks = detected["box"], detected["keypoints"]
 
 
-                landmark_s = []
-                # Configure landmarks -> Put them in a list
-                for key, value in landmarks.items():
-                    for val in value:            
-                        landmark_s.append(val)
+            landmark_s = []
+            # Configure landmarks -> Put them in a list
+            for key, value in landmarks.items():
+                for val in value:            
+                    landmark_s.append(val)
 
-                print("[INFO] Landmarks are ", landmark_s)
+            print("[INFO] Landmarks are ", landmark_s)
 
-                person_imgs_from_different_angles = {"Left" : [], "Right": [], "Center": []}
-                person_features_from_different_angles = {"Left" : [], "Right": [], "Center": []}
+            person_imgs_from_different_angles = {"Left" : [], "Right": [], "Center": []}
+            person_features_from_different_angles = {"Left" : [], "Right": [], "Center": []}
 
-                # Iterate through all rects in that image(there will be one in this case)
-                # Align image and find the position of the face
-                aligned_image, pos = aligner.align(DESIRED_SIZE, image, landmark_s);
-                
-                if len(aligned_image) == DESIRED_SIZE and len(aligned_image[0]) == DESIRED_SIZE:   
-                    # Load the aligned face to the proper angle
-                    person_imgs_from_different_angles[pos].append(aligned_image)
+            # Iterate through all rects in that image(there will be one in this case)
+            # Align image and find the position of the face
+            aligned_image, pos = aligner.align(DESIRED_SIZE, image, landmark_s);
+            
+            if len(aligned_image) == DESIRED_SIZE and len(aligned_image[0]) == DESIRED_SIZE:   
+                # Load the aligned face to the proper angle
+                person_imgs_from_different_angles[pos].append(aligned_image)
 
 
 
-                print("[INFO] Number of persons in the image: ", len(rects)/4)
+            print("[INFO] Number of persons in the image: ", len(rects)/4)
 
-                # Extract the features from images
-                for pos in person_imgs_from_different_angles:
-                    if (pos == "Center"):
+            # Extract the features from images
+            for pos in person_imgs_from_different_angles:
+                if (pos == "Center"):
+                    try:
                         person_features_from_different_angles[pos] = [np.mean(feature_extractor.get_features(person_imgs_from_different_angles[pos]), axis = 0).tolist()]
-                    else:
-                        person_features_from_different_angles[pos] = 0
+                    except Exception:
+                        pass
+                else:
+                    person_features_from_different_angles[pos] = [[0 for i in range(128)]]
+            
+            data_set[img_name] = person_features_from_different_angles
 
+            # Write back to db
+            f = open('./faces_db.txt', 'w')
+            f.write(json.dumps(data_set))
 
-                
-                data_set[img_name] = person_features_from_different_angles
+            print("[INFO] Added image to database... ")
 
-                # Write back to db
-                f = open('./faces_db.txt', 'w')
-                f.write(json.dumps(data_set))
-
-                print("[INFO] Added image to database... ")
-            except Exception:
-                pass
         else:
             pass
-
