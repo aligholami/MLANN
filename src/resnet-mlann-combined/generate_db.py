@@ -8,6 +8,7 @@
 # ========================================
 
 import numpy as np
+from mtcnn.mtcnn import MTCNN
 from mtcnn_detect import MTCNNDetect
 from align_custom import AlignCustom
 from face_feature import FaceFeature
@@ -36,7 +37,8 @@ aligner = AlignCustom()
 feature_extractor = FaceFeature(FRGraph)
 
 # Create face detection objects 
-face_detector = MTCNNDetect(FRGraph, scale_factor=RESCALE_FACTOR)
+# face_detector = MTCNNDetect(FRGraph, scale_factor=RESCALE_FACTOR)
+face_detector = MTCNN()
 
 # Open up the faces database(read permission only)
 f = open('./faces_db.txt', 'r')
@@ -59,7 +61,9 @@ for subdir, dirs, files in os.walk(ROOT_DIRECTORY):
         
         while True:
 
-            rects, landmarks = face_detector.detect_face(image, MIN_FACE_SIZE)
+            detected = face_detector.detect_faces(image)
+
+            rects, landmarks = detected["box"], detected["keypoints"]
 
             person_imgs_from_different_angles = {"Left" : [], "Right": [], "Center": []}
             person_features_from_different_angles = {"Left" : [], "Right": [], "Center": []}
