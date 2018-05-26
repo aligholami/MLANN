@@ -104,7 +104,7 @@ facerec_128D.txt Data Structure:
 This function basically does a simple linear search for 
 ^the 128D vector with the min distance to the 128D vector of the face on screen
 '''
-def find_known_faces(feature_mmap, positions, threshold = 0.6, p_threshold = 70):
+def find_known_faces(feature_mmap, positions, threshold = 0.7, p_threshold = 68):
     '''
         :param feature_mmap: an array of feature maps with shape (128, 1)
         :param positions: a list of face position types of all faces on screen
@@ -131,7 +131,7 @@ def find_known_faces(feature_mmap, positions, threshold = 0.6, p_threshold = 70)
             ####################################
             ####################################
             for known_feature_map in person_data:
-                distance = np.sqrt(np.sum(np.square(known_feature_map[256:384] - input_feature_map[256:384])))
+                distance = np.sqrt(np.sum(np.square(known_feature_map[0:127] - input_feature_map[0:127])))
 
                 if(distance < smallest):
                     smallest = distance
