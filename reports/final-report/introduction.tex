@@ -1,10 +1,26 @@
 \chapter{Introduction}
 
-In this section we'll take a brief look at the recent researches on image recognition systems and their improvements for large scale databases.
-
 \section{Motivation}
 One of the well-known issues of vision systems building, is a processing of
 large databases. Unfortunately, nearest neighbor (NN) rule and exhaustive
 search usually cannot be implemented in real-time applications\cite{motiv1}. To overcome these problems, we'll analyze some of the purposed methods in this this topic.
 
+\section{Recent Methods of Image Recognition in Large Scale Databases}
+In this section we'll take a brief look at the recent researches on image recognition systems and their improvements for large scale databases.
+
+\subsection{Approximate Nearest Neighbor Shape Indexing}
+This method relies on the rapid recovery of the nearest neighbors from the index. In high-dimensional databases, standard \textit{k}-d tree search often performs poorly.  having to examine a large fraction of the points in the space to find the exact nearest neighbor. However, a variant of this search which efficiently finds approximate neighbors will be used to limit the search time. The algorithm, which we have called Best
+Bin First (BBF) search, finds the nearest neighbor for a
+large fraction of queries, and finds a very good neighbor
+the remaining times \cite{motiv2}.
+	
 \subsection{Directed Enumeration Method}
+Directed enumeration method is proposed to improve image recognition performance. The method is applied with similarity measures which do not met metric properties. This method increases performance in 3 to 12 times in comparison with nearest neighbor. Recognition speed using \textit{DEM} is increased when many neighbors are located at similar distances \cite{motiv3}.
+
+\subsection{Directed Enumeration Alternatives Modification}
+In this method, a new modification of the method of directed alternatives’
+enumeration using the Kullback Leibler discrimination information is proposed
+for half-tone image recognition. Results of an experimental study in
+the problem of face images recognition with a large database are presented.
+It is shown that the proposed modification is characterized by increased
+speed of image recognition (5-10 times vs exhaustive search) \cite{motiv4}.

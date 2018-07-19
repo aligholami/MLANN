@@ -1,11 +1,9 @@
 \contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}
-\contentsline {section}{\numberline {1.1}Background and Recent Research}{1}{section.1.1}
-\contentsline {subsection}{\numberline {1.1.1}Feature Based Approach}{1}{subsection.1.1.1}
-\contentsline {subsection}{\numberline {1.1.2}Area Based Approach}{1}{subsection.1.1.2}
-\contentsline {subsection}{\numberline {1.1.3}Naive Template Matching}{2}{subsection.1.1.3}
-\contentsline {subsection}{\numberline {1.1.4}Image Correlation Matching}{2}{subsection.1.1.4}
-\contentsline {subsection}{\numberline {1.1.5}Sequential Similarity Detection Algorithms}{2}{subsection.1.1.5}
-\contentsline {section}{\numberline {1.2}Motivation}{2}{section.1.2}
+\contentsline {section}{\numberline {1.1}Motivation}{1}{section.1.1}
+\contentsline {section}{\numberline {1.2}Recent Methods of Image Recognition in Large Scale Databases}{1}{section.1.2}
+\contentsline {subsection}{\numberline {1.2.1}Approximate Nearest Neighbor Shape Indexing}{1}{subsection.1.2.1}
+\contentsline {subsection}{\numberline {1.2.2}Directed Enumeration Method}{2}{subsection.1.2.2}
+\contentsline {subsection}{\numberline {1.2.3}Directed Enumeration Alternatives Modification}{2}{subsection.1.2.3}
 \contentsline {chapter}{\numberline {2}Problem Definition}{3}{chapter.2}
 \contentsline {section}{\numberline {2.1}Naive Template Matching}{3}{section.2.1}
 \contentsline {section}{\numberline {2.2}FFT-Based Template Matching}{4}{section.2.2}
