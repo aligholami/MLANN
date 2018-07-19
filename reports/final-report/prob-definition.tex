@@ -3,5 +3,28 @@
 In this chapter, we'll take a close look at the core algorithm of \textit{MLANN} method. The next is dedicated to the implementation procedure of the algorithm.
 
 \subsection{MLANN; General Idea} 
-Despite the most of known fast approximate NN algorithms, the proposed method is not heuristic. The joint probabilistic densities (likelihoods) of the distances to previously checked reference objects are estimated for each class. The next reference instance is selected from the class with the maximal likelihood. To deal with the quadratic memory requirement of this approach, the author has proposed its modification, which processes the distances from all instances to a small set of pivots chosen with the farthest-first traversal. Experimental study in face recognition with the histograms of oriented gradients and the deep neural network-based image features shows that the proposed method is much faster than the known approximate NN algorithms for medium databases.
+Despite the most of known fast approximate NN algorithms, the proposed method is not heuristic. The joint probabilistic densities (likelihoods) of the distances to previously checked reference objects are estimated for each class. The next reference instance is selected from the class with the maximal likelihood. To deal with the quadratic memory requirement of this approach, the author has proposed its modification, which processes the distances from all instances to a small set of pivots chosen with the farthest-first traversal. Experimental study in face recognition with the histograms of oriented gradients and the deep neural network-based image features shows that the proposed method is much faster than the known approximate NN algorithms for medium databases \cite{def1}.
 
+\subsection{How Statistical Face Recognition Works}
+In face recognition, we are required to assign an observed image $X$ to one of $R$ classes which is specified by the database of reference images. In this method, feature maps extracted from observed and reference images are treated as probability distributions. The following subsection provides baseline assumptions for this task.
+
+\subsubsection{Key Assumptions}
+In face recognition task with statistical method, we assume that
+\begin{enumerate}
+	\item The reference images from different classes are independent;
+	\item The probability distributions of the feature vectors from the same class are identical \cite{def1}.
+\end{enumerate}
+
+\subsection{Where the Problem Arises}
+The core algorithm of many face recognition implementations use \textit{Nearest Neighbor} method as the main approach to find the most similarity between the input image and the reference images in the database. Let $X$ be the observed image and $X_r \ r\in{1, ... R}$ be each of the images in the reference database. In that case, the optimal maximal likelihood solution of the face recognition task is achieved by
+\begin{equation}
+	W_v: v = arg\min\limits_{r}\ \rho(X, X_r)
+\end{equation}
+where $r$ is selected in a \textit{brute-force} manner by the nearest neighbor algorithm and $\rho$ is mean to be the \textit{distance} of two image feature maps.
+
+\subsection{Speeding up the Search Process}
+To speed-up the search process, we can use \textit{approximate} techniques. As an example, an approximate method is provided in \cite{def2}. This method is based on the following criterion:
+\begin{equation}
+	W_v: \rho(X, X_v) < \rho_0
+\end{equation}
+which is the termination condition of the \textit{ANN} method with respect to a bound of of $\rho_0$.
