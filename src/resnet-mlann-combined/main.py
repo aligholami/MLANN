@@ -8,15 +8,17 @@
 #
 # ========================================
 
+import numpy as np
 import cv2
+import sys
+import json
+import argparse
 from align_custom import AlignCustom
 from face_feature import FaceFeature
 from mtcnn_detect import MTCNNDetect
+from nearest_neighbor import NearestNeighbor
 from tf_graph import FaceRecGraph
-import argparse
-import sys
-import json
-import numpy as np
+
 
 
 MIN_FACE_SIZE = 80  # Minimum size of 80*80 for each face
@@ -125,17 +127,12 @@ def find_known_faces(feature_mmap, positions, threshold = 0.7, p_threshold = 68)
         for person in data_set.keys():
             person_data = data_set[person][positions[i]]
 
-            ####################################
-            ####################################
-            ######## Project Checkpoint ########
-            ####################################
-            ####################################
-            for known_feature_map in person_data:
-                distance = np.sqrt(np.sum(np.square(known_feature_map[0:127] - input_feature_map[0:127])))
-
-                if(distance < smallest):
-                    smallest = distance
-                    result = person
+            nn = NearestNeighbor()
+            smallest_distance = nn.brute_force(person_data, input_feature_map)
+            
+            if(smallest_distance < smallest):
+                smallest = smallest_distance
+                result = person
 
         percentage =  min(100, 100 * threshold / smallest)
 
