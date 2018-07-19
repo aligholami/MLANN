@@ -23,8 +23,15 @@ The core algorithm of many face recognition implementations use \textit{Nearest 
 where $r$ is selected in a \textit{brute-force} manner by the nearest neighbor algorithm and $\rho$ is mean to be the \textit{distance} of two image feature maps.
 
 \subsection{Speeding up the Search Process}
+\subsubsection{Approximate Nearest Neighbor}
 To speed-up the search process, we can use \textit{approximate} techniques. As an example, an approximate method is provided in \cite{def2}. This method is based on the following criterion:
 \begin{equation}
 	W_v: \rho(X, X_v) < \rho_0
 \end{equation}
 which is the termination condition of the \textit{ANN} method with respect to a bound of of $\rho_0$.
+
+\subsubsection{Best-Bin First kd-tree}
+In this method, the first reference image $X_{r_1},\ r_1 \in \{1, ... , R\}$ is randomly chosen. Next, it is put into the priority queue if reference images sorted by the distance to $X$. Next, the highest priority item $X_i$ is pulled from the queue and the set of reference images $X_i^{(M)}$ is determined by using the following expression:
+\begin{equation}
+	(\forall X_k \in X_i^{(M)})(\forall X_j \notin X_i^{(M)})|\rho_{i, k} - \rho(X, X_k)| \leq |\rho_{i, j} - \rho(X, X_j)|
+\end{equation}
