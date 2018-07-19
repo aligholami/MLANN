@@ -132,7 +132,7 @@ def find_known_faces(feature_mmap, positions, threshold = 0.7, p_threshold = 68)
         # In case the confidence percentage is not satisfying
         if percentage <= p_threshold:
             face_ID = "Unknown"
-
+ 
         known_faces_info.append((face_ID, percentage))
 
     return known_faces_info

@@ -1,12 +1,44 @@
-# Dissertate
+LaTeX Template for Project Report
+---------------------------------
+_**Version 2.0**_
 
-## Getting started
-1. Install LaTeX. For Mac OS X, we recommend MacTex (http://tug.org/mactex/); for Windows, MiKTeX (http://miktex.org/); and for Ubuntu, Tex Live (`sudo apt-get install texlive-full`)
-2. Install the default fonts: EB Garamond, Lato, and Source Code Pro. The files are provided in `fonts/EB Garamond`, `fonts/Lato`, and `fonts/Source Code Pro`.
-3. Personalize the document by filling out your name and all the other info in `frontmatter/personalize.md`.
-4. Build your dissertation with `build.command`, located in the `scripts` directory (e.g., you can `cd` into the main directory and then run `./scripts/build.command`).
+Abstracted from a Major Project Report at CSED, NIT Calicut but can be
+modified easily to use for other reports also.
 
-## FAQ
+Released under Creative Commons Attribution license (CC-BY)
+Info: http://creativecommons.org/licenses/by/3.0/
 
-### How do I make the text justified instead of ragged right?
-Remove or comment out the line `\RaggedRight` from the .cls file.
+### Created by
+
+[Kartik Singhal](http://people.cse.nitc.ac.in/kartik "Kartik's Academic Profile")  
+BTech CSE Batch of 2009-13  
+NIT Calicut  
+Contact Info: kartiksinghal [AT] gmail [DOT] com
+
+It is advisable to learn the basics of LaTeX before using this template.
+A good resource to start with is http://en.wikibooks.org/wiki/LaTeX/
+
+How to Start
+============
+
+Start editing with report.tex and follow the instructions given there.
+
+Revision History
+================
+
+### Version 2
+1. Changed base template to a technical project report.
+2. Added example for inserting an image.
+3. Fixed numbering bug with references and acknowledgement pages.
+
+### Version 1
+1. Contains all required pages for a complete report.
+2. Highly customizable.
+3. Examples given for citing and inserting references and footnotes.
+4. PDF generated has clickable links from contents page, citations and URLs.
+5. Provides options to insert pdf title, author name, subject and keywords.
+
+Credits
+=======
+NITC logo: Mr Chandramohan MK, Graphic Studio, Central Library, NIT Calicut  
+Hacker logo: http://www.catb.org/hacker-emblem/

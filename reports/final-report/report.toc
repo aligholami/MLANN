@@ -1,0 +1,45 @@
+\contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}
+\contentsline {section}{\numberline {1.1}Background and Recent Research}{1}{section.1.1}
+\contentsline {subsection}{\numberline {1.1.1}Feature Based Approach}{1}{subsection.1.1.1}
+\contentsline {subsection}{\numberline {1.1.2}Area Based Approach}{1}{subsection.1.1.2}
+\contentsline {subsection}{\numberline {1.1.3}Naive Template Matching}{2}{subsection.1.1.3}
+\contentsline {subsection}{\numberline {1.1.4}Image Correlation Matching}{2}{subsection.1.1.4}
+\contentsline {subsection}{\numberline {1.1.5}Sequential Similarity Detection Algorithms}{2}{subsection.1.1.5}
+\contentsline {section}{\numberline {1.2}Motivation}{2}{section.1.2}
+\contentsline {chapter}{\numberline {2}Problem Definition}{3}{chapter.2}
+\contentsline {section}{\numberline {2.1}Naive Template Matching}{3}{section.2.1}
+\contentsline {section}{\numberline {2.2}FFT-Based Template Matching}{4}{section.2.2}
+\contentsline {subsection}{\numberline {2.2.1}One-Dimensional Discrete Fourier Transform}{4}{subsection.2.2.1}
+\contentsline {subsection}{\numberline {2.2.2}Two-Dimensional Discrete Fourier Transform}{4}{subsection.2.2.2}
+\contentsline {subsection}{\numberline {2.2.3}Convolution and Correlation Theorems}{5}{subsection.2.2.3}
+\contentsline {section}{\numberline {2.3}Fast Fourier Transform}{5}{section.2.3}
+\contentsline {chapter}{\numberline {3}Implementation and Performance Analysis}{8}{chapter.3}
+\contentsline {section}{\numberline {3.1}Analysis of Naive Template Matching}{8}{section.3.1}
+\contentsline {subsection}{\numberline {3.1.1}Bitmap Images}{8}{subsection.3.1.1}
+\contentsline {subsection}{\numberline {3.1.2}Serial Implementation of NTM}{8}{subsection.3.1.2}
+\contentsline {subsection}{\numberline {3.1.3}Timing the Serial NTM}{9}{subsection.3.1.3}
+\contentsline {subsection}{\numberline {3.1.4}CUDA Implementation of NTM}{9}{subsection.3.1.4}
+\contentsline {subsubsection}{Compute Sad Array Kernel}{9}{section*.3}
+\contentsline {subsubsection}{Find Minimum in Array Kernel}{9}{section*.4}
+\contentsline {subsubsection}{Find Number of Occurrences}{9}{section*.5}
+\contentsline {subsection}{\numberline {3.1.5}Launch Parameters on Test Cases}{10}{subsection.3.1.5}
+\contentsline {subsection}{\numberline {3.1.6}Occupancy Analysis}{10}{subsection.3.1.6}
+\contentsline {subsection}{\numberline {3.1.7}SM Activity Analysis}{11}{subsection.3.1.7}
+\contentsline {subsubsection}{Issued IPC}{11}{section*.6}
+\contentsline {subsubsection}{Executed IPC}{12}{section*.7}
+\contentsline {subsubsection}{SM Activity Chart}{12}{section*.8}
+\contentsline {subsubsection}{IPW Chart}{12}{section*.9}
+\contentsline {subsection}{\numberline {3.1.8}Speedup Analysis}{12}{subsection.3.1.8}
+\contentsline {subsection}{\numberline {3.1.9}Performance Analysis}{13}{subsection.3.1.9}
+\contentsline {section}{\numberline {3.2}Implementation of FFT Based Template Matching}{14}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}Real to Complex Conversion}{15}{subsection.3.2.1}
+\contentsline {subsection}{\numberline {3.2.2}Padding Data}{15}{subsection.3.2.2}
+\contentsline {subsection}{\numberline {3.2.3}2-D FFT Planning}{15}{subsection.3.2.3}
+\contentsline {subsection}{\numberline {3.2.4}Forward FFT Launch}{15}{subsection.3.2.4}
+\contentsline {subsection}{\numberline {3.2.5}Complex Conjugate Kernel}{16}{subsection.3.2.5}
+\contentsline {subsection}{\numberline {3.2.6}Complex Point-wise Kernel}{16}{subsection.3.2.6}
+\contentsline {subsection}{\numberline {3.2.7}Inverse FFT Launch}{16}{subsection.3.2.7}
+\contentsline {subsection}{\numberline {3.2.8}Maximum Value and Number of Occurrences}{16}{subsection.3.2.8}
+\contentsline {chapter}{\numberline {4}Future Work}{17}{chapter.4}
+\contentsline {chapter}{\numberline {5}Conclusion}{18}{chapter.5}
+\contentsline {chapter}{References}{19}{section*.10}

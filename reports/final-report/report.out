@@ -1,0 +1,38 @@
+\BOOKMARK [0][-]{chapter.1}{Introduction}{}% 1
+\BOOKMARK [1][-]{section.1.1}{Background and Recent Research}{chapter.1}% 2
+\BOOKMARK [2][-]{subsection.1.1.1}{Feature Based Approach}{section.1.1}% 3
+\BOOKMARK [2][-]{subsection.1.1.2}{Area Based Approach}{section.1.1}% 4
+\BOOKMARK [2][-]{subsection.1.1.3}{Naive Template Matching}{section.1.1}% 5
+\BOOKMARK [2][-]{subsection.1.1.4}{Image Correlation Matching}{section.1.1}% 6
+\BOOKMARK [2][-]{subsection.1.1.5}{Sequential Similarity Detection Algorithms}{section.1.1}% 7
+\BOOKMARK [1][-]{section.1.2}{Motivation}{chapter.1}% 8
+\BOOKMARK [0][-]{chapter.2}{Problem Definition}{}% 9
+\BOOKMARK [1][-]{section.2.1}{Naive Template Matching}{chapter.2}% 10
+\BOOKMARK [1][-]{section.2.2}{FFT-Based Template Matching}{chapter.2}% 11
+\BOOKMARK [2][-]{subsection.2.2.1}{One-Dimensional Discrete Fourier Transform}{section.2.2}% 12
+\BOOKMARK [2][-]{subsection.2.2.2}{Two-Dimensional Discrete Fourier Transform}{section.2.2}% 13
+\BOOKMARK [2][-]{subsection.2.2.3}{Convolution and Correlation Theorems}{section.2.2}% 14
+\BOOKMARK [1][-]{section.2.3}{Fast Fourier Transform}{chapter.2}% 15
+\BOOKMARK [0][-]{chapter.3}{Implementation and Performance Analysis}{}% 16
+\BOOKMARK [1][-]{section.3.1}{Analysis of Naive Template Matching}{chapter.3}% 17
+\BOOKMARK [2][-]{subsection.3.1.1}{Bitmap Images}{section.3.1}% 18
+\BOOKMARK [2][-]{subsection.3.1.2}{Serial Implementation of NTM}{section.3.1}% 19
+\BOOKMARK [2][-]{subsection.3.1.3}{Timing the Serial NTM}{section.3.1}% 20
+\BOOKMARK [2][-]{subsection.3.1.4}{CUDA Implementation of NTM}{section.3.1}% 21
+\BOOKMARK [2][-]{subsection.3.1.5}{Launch Parameters on Test Cases}{section.3.1}% 22
+\BOOKMARK [2][-]{subsection.3.1.6}{Occupancy Analysis}{section.3.1}% 23
+\BOOKMARK [2][-]{subsection.3.1.7}{SM Activity Analysis}{section.3.1}% 24
+\BOOKMARK [2][-]{subsection.3.1.8}{Speedup Analysis}{section.3.1}% 25
+\BOOKMARK [2][-]{subsection.3.1.9}{Performance Analysis}{section.3.1}% 26
+\BOOKMARK [1][-]{section.3.2}{Implementation of FFT Based Template Matching}{chapter.3}% 27
+\BOOKMARK [2][-]{subsection.3.2.1}{Real to Complex Conversion}{section.3.2}% 28
+\BOOKMARK [2][-]{subsection.3.2.2}{Padding Data}{section.3.2}% 29
+\BOOKMARK [2][-]{subsection.3.2.3}{2-D FFT Planning}{section.3.2}% 30
+\BOOKMARK [2][-]{subsection.3.2.4}{Forward FFT Launch}{section.3.2}% 31
+\BOOKMARK [2][-]{subsection.3.2.5}{Complex Conjugate Kernel}{section.3.2}% 32
+\BOOKMARK [2][-]{subsection.3.2.6}{Complex Point-wise Kernel}{section.3.2}% 33
+\BOOKMARK [2][-]{subsection.3.2.7}{Inverse FFT Launch}{section.3.2}% 34
+\BOOKMARK [2][-]{subsection.3.2.8}{Maximum Value and Number of Occurrences}{section.3.2}% 35
+\BOOKMARK [0][-]{chapter.4}{Future Work}{}% 36
+\BOOKMARK [0][-]{chapter.5}{Conclusion}{}% 37
+\BOOKMARK [0][-]{section*.10}{References}{}% 38
