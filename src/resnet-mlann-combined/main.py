@@ -121,26 +121,19 @@ def find_known_faces(feature_mmap, positions, threshold = 0.7, p_threshold = 68)
 
     for (i, input_feature_map) in enumerate(feature_mmap):
 
-        result = "Unknown"
-        smallest = sys.maxsize
+        face_ID = "Unknown"
 
-        for person in data_set.keys():
-            person_data = data_set[person][positions[i]]
+        # Perform a brute force on each input feature map (position based brute force)
+        nn = NearestNeighbor()
+        smallest_distance, face_ID = nn.brute_force(data_set, i, input_feature_map, positions)
 
-            nn = NearestNeighbor()
-            smallest_distance = nn.brute_force(person_data, input_feature_map)
-            
-            if(smallest_distance < smallest):
-                smallest = smallest_distance
-                result = person
-
-        percentage =  min(100, 100 * threshold / smallest)
+        percentage =  min(100, 100 * threshold / smallest_distance)
 
         # In case the confidence percentage is not satisfying
         if percentage <= p_threshold:
-            result = "Unknown"
+            face_ID = "Unknown"
 
-        known_faces_info.append((result, percentage))
+        known_faces_info.append((face_ID, percentage))
 
     return known_faces_info
 
