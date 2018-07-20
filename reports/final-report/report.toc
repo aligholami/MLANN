@@ -27,8 +27,8 @@
 \contentsline {subsection}{\numberline {3.3.5}MTCNN-Detect Module}{9}{subsection.3.3.5}
 \contentsline {subsection}{\numberline {3.3.6}Core Algorithm}{9}{subsection.3.3.6}
 \contentsline {subsection}{\numberline {3.3.7}How to Run the Project}{9}{subsection.3.3.7}
-\contentsline {subsection}{\numberline {3.3.8}Adding a New Reference Face}{9}{subsection.3.3.8}
-\contentsline {subsection}{\numberline {3.3.9}Real-time Face Recognition}{10}{subsection.3.3.9}
+\contentsline {subsubsection}{Adding a New Reference Face}{9}{section*.7}
+\contentsline {subsubsection}{Real-time Face Recognition}{10}{section*.8}
 \contentsline {chapter}{\numberline {4}Future Work}{11}{chapter.4}
 \contentsline {chapter}{\numberline {5}Conclusion}{12}{chapter.5}
-\contentsline {chapter}{References}{13}{section*.7}
+\contentsline {chapter}{References}{13}{section*.9}
