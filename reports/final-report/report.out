@@ -22,6 +22,9 @@
 \BOOKMARK [2][-]{subsection.3.3.4}{Pre-trained Model Dependency; Inception Resnet V1}{section.3.3}% 22
 \BOOKMARK [2][-]{subsection.3.3.5}{MTCNN-Detect Module}{section.3.3}% 23
 \BOOKMARK [2][-]{subsection.3.3.6}{Core Algorithm}{section.3.3}% 24
-\BOOKMARK [0][-]{chapter.4}{Future Work}{}% 25
-\BOOKMARK [0][-]{chapter.5}{Conclusion}{}% 26
-\BOOKMARK [0][-]{section*.7}{References}{}% 27
+\BOOKMARK [2][-]{subsection.3.3.7}{How to Run the Project}{section.3.3}% 25
+\BOOKMARK [2][-]{subsection.3.3.8}{Adding a New Reference Face}{section.3.3}% 26
+\BOOKMARK [2][-]{subsection.3.3.9}{Real-time Face Recognition}{section.3.3}% 27
+\BOOKMARK [0][-]{chapter.4}{Future Work}{}% 28
+\BOOKMARK [0][-]{chapter.5}{Conclusion}{}% 29
+\BOOKMARK [0][-]{section*.7}{References}{}% 30
