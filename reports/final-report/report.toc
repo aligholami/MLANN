@@ -4,7 +4,7 @@
 \contentsline {subsection}{\numberline {1.2.1}Approximate Nearest Neighbor Shape Indexing}{1}{subsection.1.2.1}
 \contentsline {subsection}{\numberline {1.2.2}Directed Enumeration Method}{2}{subsection.1.2.2}
 \contentsline {subsection}{\numberline {1.2.3}Directed Enumeration Alternatives Modification}{2}{subsection.1.2.3}
-\contentsline {chapter}{\numberline {2}Problem Definition}{3}{chapter.2}
+\contentsline {chapter}{\numberline {2}Problem Definition and Algorithm Definition}{3}{chapter.2}
 \contentsline {subsection}{\numberline {2.0.1}MLANN; General Idea}{3}{subsection.2.0.1}
 \contentsline {subsection}{\numberline {2.0.2}How Statistical Face Recognition Works}{3}{subsection.2.0.2}
 \contentsline {subsubsection}{Key Assumptions}{4}{section*.3}
@@ -12,33 +12,37 @@
 \contentsline {subsection}{\numberline {2.0.4}Speeding up the Search Process}{4}{subsection.2.0.4}
 \contentsline {subsubsection}{Approximate Nearest Neighbor}{4}{section*.4}
 \contentsline {subsubsection}{Best-Bin First kd-tree}{4}{section*.5}
-\contentsline {chapter}{\numberline {3}Implementation and Performance Analysis}{5}{chapter.3}
-\contentsline {section}{\numberline {3.1}Analysis of Naive Template Matching}{5}{section.3.1}
-\contentsline {subsection}{\numberline {3.1.1}Bitmap Images}{5}{subsection.3.1.1}
-\contentsline {subsection}{\numberline {3.1.2}Serial Implementation of NTM}{5}{subsection.3.1.2}
-\contentsline {subsection}{\numberline {3.1.3}Timing the Serial NTM}{6}{subsection.3.1.3}
-\contentsline {subsection}{\numberline {3.1.4}CUDA Implementation of NTM}{6}{subsection.3.1.4}
-\contentsline {subsubsection}{Compute Sad Array Kernel}{6}{section*.6}
-\contentsline {subsubsection}{Find Minimum in Array Kernel}{6}{section*.7}
-\contentsline {subsubsection}{Find Number of Occurrences}{6}{section*.8}
-\contentsline {subsection}{\numberline {3.1.5}Launch Parameters on Test Cases}{7}{subsection.3.1.5}
-\contentsline {subsection}{\numberline {3.1.6}Occupancy Analysis}{7}{subsection.3.1.6}
-\contentsline {subsection}{\numberline {3.1.7}SM Activity Analysis}{8}{subsection.3.1.7}
-\contentsline {subsubsection}{Issued IPC}{8}{section*.9}
-\contentsline {subsubsection}{Executed IPC}{9}{section*.10}
-\contentsline {subsubsection}{SM Activity Chart}{9}{section*.11}
-\contentsline {subsubsection}{IPW Chart}{9}{section*.12}
-\contentsline {subsection}{\numberline {3.1.8}Speedup Analysis}{9}{subsection.3.1.8}
-\contentsline {subsection}{\numberline {3.1.9}Performance Analysis}{10}{subsection.3.1.9}
-\contentsline {section}{\numberline {3.2}Implementation of FFT Based Template Matching}{11}{section.3.2}
-\contentsline {subsection}{\numberline {3.2.1}Real to Complex Conversion}{12}{subsection.3.2.1}
-\contentsline {subsection}{\numberline {3.2.2}Padding Data}{12}{subsection.3.2.2}
-\contentsline {subsection}{\numberline {3.2.3}2-D FFT Planning}{12}{subsection.3.2.3}
-\contentsline {subsection}{\numberline {3.2.4}Forward FFT Launch}{12}{subsection.3.2.4}
-\contentsline {subsection}{\numberline {3.2.5}Complex Conjugate Kernel}{13}{subsection.3.2.5}
-\contentsline {subsection}{\numberline {3.2.6}Complex Point-wise Kernel}{13}{subsection.3.2.6}
-\contentsline {subsection}{\numberline {3.2.7}Inverse FFT Launch}{13}{subsection.3.2.7}
-\contentsline {subsection}{\numberline {3.2.8}Maximum Value and Number of Occurrences}{13}{subsection.3.2.8}
-\contentsline {chapter}{\numberline {4}Future Work}{14}{chapter.4}
-\contentsline {chapter}{\numberline {5}Conclusion}{15}{chapter.5}
-\contentsline {chapter}{References}{16}{section*.13}
+\contentsline {subsubsection}{Maximum Likelihood Approximate Nearest Neighbor Method}{5}{section*.6}
+\contentsline {subsection}{\numberline {2.0.5}MLANN; Disadvantages}{5}{subsection.2.0.5}
+\contentsline {subsection}{\numberline {2.0.6}Pivot Based MLANN; An Improvement to MLANN Method}{6}{subsection.2.0.6}
+\contentsline {subsection}{\numberline {2.0.7}Time and Space Complexity Analysis}{6}{subsection.2.0.7}
+\contentsline {chapter}{\numberline {3}Implementation and Performance Analysis}{7}{chapter.3}
+\contentsline {section}{\numberline {3.1}Analysis of Naive Template Matching}{7}{section.3.1}
+\contentsline {subsection}{\numberline {3.1.1}Bitmap Images}{7}{subsection.3.1.1}
+\contentsline {subsection}{\numberline {3.1.2}Serial Implementation of NTM}{7}{subsection.3.1.2}
+\contentsline {subsection}{\numberline {3.1.3}Timing the Serial NTM}{8}{subsection.3.1.3}
+\contentsline {subsection}{\numberline {3.1.4}CUDA Implementation of NTM}{8}{subsection.3.1.4}
+\contentsline {subsubsection}{Compute Sad Array Kernel}{8}{section*.7}
+\contentsline {subsubsection}{Find Minimum in Array Kernel}{8}{section*.8}
+\contentsline {subsubsection}{Find Number of Occurrences}{8}{section*.9}
+\contentsline {subsection}{\numberline {3.1.5}Launch Parameters on Test Cases}{9}{subsection.3.1.5}
+\contentsline {subsection}{\numberline {3.1.6}Occupancy Analysis}{9}{subsection.3.1.6}
+\contentsline {subsection}{\numberline {3.1.7}SM Activity Analysis}{10}{subsection.3.1.7}
+\contentsline {subsubsection}{Issued IPC}{10}{section*.10}
+\contentsline {subsubsection}{Executed IPC}{11}{section*.11}
+\contentsline {subsubsection}{SM Activity Chart}{11}{section*.12}
+\contentsline {subsubsection}{IPW Chart}{11}{section*.13}
+\contentsline {subsection}{\numberline {3.1.8}Speedup Analysis}{11}{subsection.3.1.8}
+\contentsline {subsection}{\numberline {3.1.9}Performance Analysis}{12}{subsection.3.1.9}
+\contentsline {section}{\numberline {3.2}Implementation of FFT Based Template Matching}{13}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}Real to Complex Conversion}{14}{subsection.3.2.1}
+\contentsline {subsection}{\numberline {3.2.2}Padding Data}{14}{subsection.3.2.2}
+\contentsline {subsection}{\numberline {3.2.3}2-D FFT Planning}{14}{subsection.3.2.3}
+\contentsline {subsection}{\numberline {3.2.4}Forward FFT Launch}{14}{subsection.3.2.4}
+\contentsline {subsection}{\numberline {3.2.5}Complex Conjugate Kernel}{15}{subsection.3.2.5}
+\contentsline {subsection}{\numberline {3.2.6}Complex Point-wise Kernel}{15}{subsection.3.2.6}
+\contentsline {subsection}{\numberline {3.2.7}Inverse FFT Launch}{15}{subsection.3.2.7}
+\contentsline {subsection}{\numberline {3.2.8}Maximum Value and Number of Occurrences}{15}{subsection.3.2.8}
+\contentsline {chapter}{\numberline {4}Future Work}{16}{chapter.4}
+\contentsline {chapter}{\numberline {5}Conclusion}{17}{chapter.5}
+\contentsline {chapter}{References}{18}{section*.14}
