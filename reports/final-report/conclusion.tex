@@ -1,8 +1,15 @@
 \chapter{Conclusion}
-In this project, we analyzed various algorithms for the task of \textit{Image Template Matching}. It is fair to say that there are already highly optimized libraries with template matching capabilities such as \textit{OpenCV}, but as mentioned before, the main purpose of this project is to improve the understanding of the CUDA environment and parallel implementation of highly-demanded computer vision tasks such as template matching.
-We analyzed two main methods to perform this task:
-\begin{enumerate}
-	\item Naive Template Matching
-	\item FFT Based Template Matching
-\end{enumerate}
-For further read, please refer to methods such as \textit{Stereo Matching}, \textit{Image Registration} and \textit{Scale Invariant Feature Transform}.
+In this project, we implemented the novel ANN method by Professor \textit{Savchenko} with the
+maximal likelihood search of the next reference instance
+in order to improve the performance of the NN-based image
+recognition methods. We analyzed its modification P-ML-ANN to
+make this approach suitable for practical applications. Several pivots
+are chosen at the preprocessing stage of the P-ML-ANN
+method. Hence, the main cycle of the search procedure
+becomes as fast as the brute force. Although this approach does
+not achieve the lowest average number of computed distances as
+the ML-ANN, it is more computationally efficient in most cases.
+Our modification requires only linear memory space to store the
+distances between pivots and all reference images. An obvious
+drawback of this procedure is the need for a proper choice of the
+number of pivots.e Invariant Feature Transform.
